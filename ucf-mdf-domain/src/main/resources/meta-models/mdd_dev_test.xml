@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<components xmlns="http://www.imeta.org/meta"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.imeta.org/meta http://upsms.yonyouup.com/meta.xsd">
+    <references>
+        <reference file="ucfbase.xml"/>
+    </references>
+    <component name="dev" moduleName="mdd" title="mdd开发组件" domain="mdd-dev-test">
+        <!--主表 -->
+        <class name="DevTest" title="mdd开发测试" tableName="mdd_dev_test">
+            <attributes>
+                <attribute name="username" columnName="username" title="user" type="String" is_mul_language="true" iLength="36" jointUnique="true"/>
+
+                <!--ES参照-->
+                <attribute name="escz" columnName="escz" title="测试es参照" type="mdd.devcz.Cz" iLength="255" jointUnique="true"/>
+                <!--远程参照-->
+                <attribute name="product" columnName="product_id" title="物料参照" type="aa.product.Product" iLength="255" />
+
+                <!--子表属性-->
+                <attribute name="childrenList" title="子表" type="mdd.dev.DevTestChild"/>
+            </attributes>
+        </class>
+
+        <!--子表 -->
+        <class name="DevTestChild" title="开发测试子表" tableName="mdd_dev_test_child">
+            <attributes>
+                <!--主表外键-->
+                <attribute name="mainTableId" columnName="main_table_id" title="主表外键" type="mdd.dev.DevTest"/>
+
+                <attribute name="memo" columnName="memo" title="描述字段" type="String"/>
+            </attributes>
+        </class>
+
+        <!--继承基类-->
+        <generalizations>
+            <generalization parent="ucfbase.entity.BizObject" child="DevTest"/>
+            <generalization parent="ucfbase.entity.BizObject" child="DevTestChild"/>
+        </generalizations>
+
+        <!--实现接口-->
+        <realizations>
+            <realization supplier="ucfbase.ucfbaseItf.LogicDelete" client="DevTest" />
+            <realization supplier="ucfbase.ucfbaseItf.LogicDelete" client="DevTestChild" />
+        </realizations>
+
+        <!--主子关联关系-->
+        <associations>
+            <association type="composition" typeB="DevTest" roleB="mainTableId" typeA="DevTestChild" roleA="childrenList"
+                         roleAMulti="0..n"/>
+        </associations>
+    </component>
+</components>

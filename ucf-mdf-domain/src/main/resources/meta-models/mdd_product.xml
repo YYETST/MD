@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<components xmlns="http://www.imeta.org/meta" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.imeta.org/meta http://upsms.yonyouup.com/meta.xsd">
+    <references>
+        <reference file="basedoc_base.xml" />
+    </references>
+    <component name="product" moduleName="mdd" title="商品组件" domain="mdd-dev-test">
+        <class name="ProductVO" title="商品" tableName="bd_product">
+            <attributes>
+                <attribute name="code" title="商品编码" type="String" iLength="36" />
+                <attribute name="name" title="商品名称" type="String" iLength="36" />
+            </attributes>
+        </class>
+        <class name="ProductAlbum" title="商品图片" tableName="mdd_product_album">
+            <attributes>
+                <attribute name="id" title="ID" type="String" iLength="36" isKey="true"/>
+                <attribute name="pubts" columnName="pubts" title="时间戳" type="DateTime" isSyncKey="true"/>
+                <attribute name="productId" columnName="productId" title="商品ID"
+                           type="ProductVO"/>
+                <attribute name="cFolder" columnName="cFolder" title="图片文件路径"
+                           type="String" iLength="255" />
+                <attribute name="cImgName" columnName="cImgName" title="图片名称"
+                           type="String" iLength="255" />
+                <attribute name="iSort" columnName="iSort"
+                           title="排序" type="Integer" iLength="11" />
+                <attribute name="cType" columnName="cType" title="图片类型"
+                           type="String" iLength="255" />
+                <attribute name="cSize" columnName="cSize"
+                           title="图片大小" type="Integer" iLength="20" />
+            </attributes>
+        </class>
+        <class name="ProductAttachment" title="商品附件" tableName="mdd_product_attachement">
+            <attributes>
+                <attribute name="id" title="ID" type="String" iLength="36" isKey="true"/>
+                <attribute name="pubts" columnName="pubts" title="时间戳" type="DateTime" isSyncKey="true"/>
+                <attribute name="productId" columnName="productId" title="商品ID"
+                           type="ProductVO"/>
+                <attribute name="cFolder" columnName="cFolder" title="图片文件路径"
+                           type="String" iLength="255" />
+                <attribute name="cFileName" columnName="cFileName" title="附件名称"
+                           type="String" iLength="255" />
+                <attribute name="iSort" columnName="iSort"
+                           title="排序" type="Integer" iLength="11" />
+                <attribute name="cType" columnName="cType" title="图片类型"
+                           type="String" iLength="255" />
+                <attribute name="cFileSize" columnName="cFileSize"
+                           title="图片大小" type="Integer" iLength="20" />
+            </attributes>
+        </class>
+        <class name="ProductDescription" title="商品详情" tableName="mdd_product_description">
+            <attributes>
+                <attribute name="id" title="ID" type="String" iLength="36" isKey="true"/>
+                <attribute name="pubts" columnName="pubts" title="时间戳" type="DateTime" isSyncKey="true"/>
+                <attribute name="productId" columnName="productId" title="商品ID"
+                           type="ProductVO"/>
+                <attribute type="Text" title="物料详细描述（电脑端）" name="description" columnName="cDescription" ></attribute>
+                <attribute type="Text" title="物料详细描述（移动端）" name="mobileDescription" columnName="mobileDescription" ></attribute>
+            </attributes>
+        </class>
+        <realizations>
+            <realization supplier="ucfbase.ucfbaseItf.ITenant"
+                         client="ProductVO" />
+            <realization supplier="ucfbase.ucfbaseItf.ITenant"
+                         client="ProductAlbum" />
+            <realization supplier="ucfbase.ucfbaseItf.ITenant"
+                         client="ProductAttachment" />
+            <realization supplier="ucfbase.ucfbaseItf.ITenant"
+                         client="ProductDescription" />
+        </realizations>
+        <generalizations>
+            <generalization parent="ucfbase.entity.BizObject"
+                            child="ProductVO" />
+        </generalizations>
+        <associations>
+            <association type="composition" roleB="productId" typeB="ProductVO" roleA="productAlbums" typeA="ProductAlbum" roleAMulti="0..n" />
+            <association type="composition" roleB="productId" typeB="ProductVO" roleA="productAttachments" typeA="ProductAttachment" roleAMulti="0..n" />
+            <association type="composition" roleB="productId" typeB="ProductVO" roleA="productDescription" typeA="ProductDescription" roleAMulti="1" />
+        </associations>
+    </component>
+</components>

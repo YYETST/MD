@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<components xmlns="http://www.imeta.org/meta"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.imeta.org/meta http://upsms.yonyouup.com/meta.xsd">
+    <references>
+        <reference file="ucfbase.xml"/>
+    </references>
+    <component name="devcz" moduleName="mdd" title="mdd-dev组件" domain="mdd-dev-cz">
+        <!--主表-->
+        <class name="Cz" title="参照" tableName="mdd_dev_cz" metaIndex="mdd_dev_cz" service="es">
+            <attributes>
+                <!--实体信息-->
+                <attribute name="code" columnName="code" title="编码" type="String" iLength="50"/>
+                <attribute name="name" columnName="name" title="名称" type="String" iLength="100"/>
+            </attributes>
+        </class>
+
+        <generalizations>
+            <generalization parent="ucfbase.entity.BizObject" child="Cz"/>
+        </generalizations>
+
+    </component>
+</components>

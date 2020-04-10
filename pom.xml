@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.yonyou.iuap</groupId>
+        <artifactId>ucf-parent</artifactId>
+        <version>1.0.2-RELEASE</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yonyou.ucf</groupId>
+    <artifactId>ucf-mdf-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>3.0-SNAPSHOT</version>
+    <modules>
+        <module>ucf-mdf-api</module>
+        <module>ucf-mdf-app</module>
+        <module>ucf-mdf-bootstrap</module>
+        <module>ucf-mdf-conf</module>
+        <module>ucf-mdf-domain</module>
+		<module>ucf-mdf-test</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <ucf-mdf.version>3.0-SNAPSHOT</ucf-mdf.version>
+        <imeta.groupId>org.imeta</imeta.groupId>
+        <imeta.version>2.0.10-SNAPSHOT</imeta.version>
+        <mdd.version>3.0.0-SNAPSHOT</mdd.version>
+        <diwork.version>4.0.6-SNAPSHOT</diwork.version>
+        <mwclient.version>5.2.1-RELEASE</mwclient.version>
+        <iris.version>5.2.1-RELEASE</iris.version>
+        <ucf.version>1.0.6-SNAPSHOT</ucf.version>
+        <cglib.version>3.1</cglib.version>
+
+        <!-- iuap公共组件依赖版本 -->
+        <metadata-api-unified-sdk.version>0.0.19-SNAPSHOT</metadata-api-unified-sdk.version>
+        <iuap-tenant-cas.version>4.0.2-release</iuap-tenant-cas.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- mdd -->
+            <dependency>
+                <groupId>com.yonyou</groupId>
+                <artifactId>mdd-pub-jar</artifactId>
+                <version>${mdd.version}</version>
+            </dependency>
+
+
+            <!-- diwork -->
+            <dependency>
+                <groupId>com.yonyou.diwork</groupId>
+                <artifactId>diwork-sdk</artifactId>
+                <version>${diwork.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.diwork</groupId>
+                <artifactId>diwork-pub-multilingual</artifactId>
+                <version>${diwork.version}</version>
+            </dependency>
+            <!-- iuap公共组件依赖 start -->
+            <dependency>
+                <groupId>com.yonyou.cloud.middleware</groupId>
+                <artifactId>mwclient</artifactId>
+                <version>${mwclient.version}</version>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.cloud.middleware</groupId>
+                <artifactId>iris-springboot-support</artifactId>
+                <version>${iris.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.cloud.middleware</groupId>
+                <artifactId>iris-spring-support</artifactId>
+                <version>${iris.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.cloud.middleware</groupId>
+                <artifactId>iris-dubbo-fuse-support</artifactId>
+                <version>${iris.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.cloud.middleware</groupId>
+                <artifactId>iris-iuap-support</artifactId>
+                <version>${iris.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.cloud</groupId>
+                <artifactId>auth-sdk-client</artifactId>
+                <version>3.5.2-RELEASE</version>
+            </dependency>
+            <!--新版元数据sdk依赖 -->
+            <dependency>
+                <groupId>com.yonyou.metadata</groupId>
+                <artifactId>metadata-api-unified-sdk</artifactId>
+                <version>${metadata-api-unified-sdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.iuap</groupId>
+                <artifactId>iuap-tenant-cas</artifactId>
+                <version>${iuap-tenant-cas.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <!-- compiler插件, 设定JDK版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <!-- 开发环境 -->
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <build>
+                <filters>
+                    <filter>../config/config-dev.properties</filter>
+                </filters>
+            </build>
+        </profile>
+        <profile>
+            <!-- mdd-test环境 -->
+            <id>test</id>
+            <properties>
+                <profiles.active>test</profiles.active>
+            </properties>
+            <build>
+                <filters>
+                    <filter>../config/config-test.properties</filter>
+                </filters>
+            </build>
+        </profile>
+        <profile>
+            <!-- 专属云MDD-REF环境 -->
+            <id>zsref</id>
+            <properties>
+                <profiles.active>zsref</profiles.active>
+            </properties>
+            <build>
+                <filters>
+                    <filter>../config/config-zsref.properties</filter>
+                </filters>
+            </build>
+        </profile>
+
+    </profiles>
+
+</project>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ucf-mdf-parent</artifactId>
+        <groupId>com.yonyou.ucf</groupId>
+        <version>3.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ucf-mdf-conf</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.yonyou</groupId>
+            <artifactId>mdd-pub-jar</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yonyou.metadata</groupId>
+            <artifactId>metadata-api-unified-sdk</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>iuap-utils</artifactId>
+                    <groupId>com.yonyou.iuap</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yonyou.diwork</groupId>
+            <artifactId>diwork-pub-multilingual</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>ucf-log</artifactId>
+                    <groupId>com.yonyou.iuap</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>ucf-common</artifactId>
+                    <groupId>com.yonyou.iuap</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+</project>

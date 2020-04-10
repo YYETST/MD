@@ -1,0 +1,8 @@
+/*可以在这里添加你自己的css*/
+.view p{
+  margin: 0px!important;
+}
+.view p img{
+  vertical-align: middle;
+  max-width: 707px;
+}

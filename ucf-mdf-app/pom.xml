@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ucf-mdf-parent</artifactId>
+        <groupId>com.yonyou.ucf</groupId>
+        <version>3.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ucf-mdf-app</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.yonyou.ucf</groupId>
+            <artifactId>ucf-mdf-domain</artifactId>
+            <version>${ucf-mdf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yonyou.ucf</groupId>
+            <artifactId>ucf-mdf-conf</artifactId>
+            <version>${ucf-mdf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yonyou.iuap</groupId>
+            <artifactId>ucf-log</artifactId>
+            <version>${ucf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yonyou.iuap</groupId>
+            <artifactId>ucf-core</artifactId>
+            <version>${ucf.version}</version>
+        </dependency>
+
+        <!-- zookeeper客户端 -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>4.2.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>zookeeper</artifactId>
+                    <groupId>org.apache.zookeeper</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.8</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-log4j12</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--<dependency>
+            <groupId>com.yonyoucloud</groupId>
+            <artifactId>uretail-common-core</artifactId>
+            <version>2.0.0-SNAPSHOT</version>
+        </dependency>-->
+
+    </dependencies>
+
+
+</project>

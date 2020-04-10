@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ucf-mdf-api/ucf-mdf-api.iml" filepath="$PROJECT_DIR$/ucf-mdf-api/ucf-mdf-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ucf-mdf-app/ucf-mdf-app.iml" filepath="$PROJECT_DIR$/ucf-mdf-app/ucf-mdf-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ucf-mdf-bootstrap/ucf-mdf-bootstrap.iml" filepath="$PROJECT_DIR$/ucf-mdf-bootstrap/ucf-mdf-bootstrap.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ucf-mdf-conf/ucf-mdf-conf.iml" filepath="$PROJECT_DIR$/ucf-mdf-conf/ucf-mdf-conf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ucf-mdf-domain/ucf-mdf-domain.iml" filepath="$PROJECT_DIR$/ucf-mdf-domain/ucf-mdf-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ucf-mdf-parent.iml" filepath="$PROJECT_DIR$/ucf-mdf-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ucf-mdf-test/ucf-mdf-test.iml" filepath="$PROJECT_DIR$/ucf-mdf-test/ucf-mdf-test.iml" />
+    </modules>
+  </component>
+</project>

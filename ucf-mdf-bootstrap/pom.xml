@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ucf-mdf-parent</artifactId>
+        <groupId>com.yonyou.ucf</groupId>
+        <version>3.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ucf-mdf-bootstrap</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+       <!-- springboot web -->
+        <dependency>
+        <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+        </dependency>
+
+        <!-- test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+
+
+
+        <!-- 模块引用 -->
+        <dependency>
+            <groupId>com.yonyou.ucf</groupId>
+            <artifactId>ucf-mdf-api</artifactId>
+            <version>${ucf-mdf.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>ucf-log</artifactId>
+                    <groupId>com.yonyou.iuap</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- diwork -->
+        <dependency>
+            <groupId>com.yonyou.diwork</groupId>
+            <artifactId>diwork-sdk</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-beanutils</artifactId>
+                    <groupId>commons-beanutils</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>iuap-utils</artifactId>
+                    <groupId>com.yonyou.iuap</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.yonyou.diwork</groupId>
+                    <artifactId>diwork-framework-exception</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.yonyou.diwork</groupId>
+                    <artifactId>diwork-framework-model</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>iuap-generic</artifactId>
+                    <groupId>com.yonyou.iuap</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>iuap-bd-translation-sdk</artifactId>
+                    <groupId>com.yonyou.iuap</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.yonyou.diwork</groupId>
+            <artifactId>diwork-framework-model</artifactId>
+            <version>${diwork.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-beanutils</artifactId>
+                    <groupId>commons-beanutils</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.yonyou.iuap</groupId>
+                    <artifactId>iuap-log</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>ucf-log</artifactId>
+                    <groupId>com.yonyou.iuap</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>ucf-common</artifactId>
+                    <groupId>com.yonyou.iuap</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- iuap公共组件依赖 start -->
+        <dependency>
+            <groupId>com.yonyou.cloud.middleware</groupId>
+            <artifactId>mwclient</artifactId>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.yonyou.cloud.middleware</groupId>
+            <artifactId>iris-springboot-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yonyou.cloud.middleware</groupId>
+            <artifactId>iris-spring-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yonyou.cloud.middleware</groupId>
+            <artifactId>iris-dubbo-fuse-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yonyou.cloud.middleware</groupId>
+            <artifactId>iris-iuap-support</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.yonyou.cloud</groupId>
+            <artifactId>auth-sdk-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.yonyou.iuap</groupId>
+            <artifactId>iuap-tenant-cas</artifactId>
+        </dependency>
+
+        <!-- imeta -->
+        <dependency>
+            <groupId>${imeta.groupId}</groupId>
+            <artifactId>imeta-core</artifactId>
+            <version>${imeta.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${imeta.groupId}</groupId>
+            <artifactId>imeta-orm</artifactId>
+            <version>${imeta.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${imeta.groupId}</groupId>
+            <artifactId>imeta-biz</artifactId>
+            <version>${imeta.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${imeta.groupId}</groupId>
+            <artifactId>imeta-spring</artifactId>
+            <version>${imeta.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${imeta.groupId}</groupId>
+            <artifactId>imeta-spring-support</artifactId>
+            <version>${imeta.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>HikariCP-java6</artifactId>
+                    <groupId>com.zaxxer</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>${imeta.groupId}</groupId>
+            <artifactId>imeta-tpl</artifactId>
+            <version>${imeta.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${imeta.groupId}</groupId>
+            <artifactId>imeta-io</artifactId>
+            <version>${imeta.version}</version>
+        </dependency>
+
+        <!-- diwork支持yhttoken生成session 4.0.6-SNAPSHOT 以上 -->
+        <dependency>
+            <groupId>com.yonyou.diwork</groupId>
+            <artifactId>diwork-sdk-eucsupport</artifactId>
+            <version>${diwork.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- compiler插件, 设定JDK版本 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!-- 如果没有该配置，devtools不会生效 -->
+                    <fork>true</fork>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.yonyou.ucf.mdf.MDFApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--可以把依赖的包都打包到生成的Jar包中 -->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/**.*</include>
+                </includes>
+            </resource>
+        </resources>
+        <finalName>mdd</finalName>
+    </build>
+
+</project>

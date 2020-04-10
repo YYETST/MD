@@ -1,0 +1,20 @@
+#! bin/sh
+
+dbIp="172.20.56.136"
+dbUsername="yonyou"
+dbPassword="Yonyou@1988"
+dbCategory="iuap_cloud_basedoc"
+
+path="./UIExcelCreateSQL/"
+files=`find $path -name *.sql`
+for fileName in $files; do
+    echo "#### 发现文件" $fileName
+    echo "#### 执行导入..."
+    mysql -h$dbIp -u$dbUsername -p$dbPassword --default-character-set=utf8 $dbCategory < $fileName
+    echo "#### 当前导入完成..."
+    echo "\n"
+done
+
+echo  "#### 导入完成..."
+
+sleep 1.5
